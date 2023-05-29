@@ -9,5 +9,8 @@
   },
   "keywords": [],
   "author": "Rostyslav Lisovyi ^lisovyi.rostyslav@gmail.com",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.2.5"
+  }
 }
