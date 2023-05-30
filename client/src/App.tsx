@@ -1,5 +1,7 @@
 import React, {useState, useRef}from 'react';
 import emptyMap from './empty-map.jpg';
+import axios from 'axios';
+
 
 import './App.css';
 
@@ -10,6 +12,15 @@ function App() {
       const fileType:string=fileName.split('.').reverse()[0]
       if(fileType==='grid'){
           setErrors(null)
+          try {
+             const formData = new FormData();
+             const file = event.target.files[0];
+             formData.append('file', file);
+             const {data} = await axios.post('/upload', formData);
+              console.log(data);
+          } catch(error:any){
+              setErrors(error.message)
+          }
       }else{
         setErrors("Please add correct file with type \'grid\'")
       }
