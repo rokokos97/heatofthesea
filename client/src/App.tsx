@@ -1,5 +1,6 @@
 import React, {useState, useRef}from 'react';
 import emptyMap from './empty-map.jpg';
+import configFile from './config.json'
 import axios from 'axios';
 
 
@@ -16,8 +17,8 @@ function App() {
              const formData = new FormData();
              const file = event.target.files[0];
              formData.append('file', file);
-             const {data} = await axios.post('/upload', formData);
-              console.log(data);
+             const {data} = await axios.post(configFile.apiEndpoint+'/upload', formData);
+             setErrors(data.message);
           } catch(error:any){
               setErrors(error.message)
           }

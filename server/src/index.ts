@@ -1,15 +1,16 @@
 import express from 'express';
 import multer from 'multer';
 import path from 'path';
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
 // оголошую сховище для фалів
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'src/uploads')
     },
     filename: function (req, file, cb) {
-        console.log('req.file', req);
         cb(null, 'sst.grid')
     }
 })
