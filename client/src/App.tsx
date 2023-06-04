@@ -23,7 +23,7 @@ function App() {
               setErrors(error.message)
           }
       }else{
-        setErrors("Please add correct file with type \'grid\'")
+        setErrors("Please add correct file with type 'grid'")
       }
   }
   const handleClick = () => {
