@@ -36,13 +36,16 @@ app.post('/upload', upload.any(), (req: Request, res: Response) => {
     });
 });
 
-app.listen(8000, (error: Error | null) => {
-    if (error) {
-        return console.log(error);
+async function start(){
+    try{
+        app.listen(8000,()=>{
+            console.log('Server started on port: 8000');
+        })
+    }catch (error:any){
+        console.log(error.message);
     }
-    console.log('Server started on port: 8000');
-});
-
+}
+start();
 app.get('/', (req: Request, res: Response) => {
     res.send('Hello World!');
 });
