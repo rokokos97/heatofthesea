@@ -39,7 +39,10 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={`${configFile.apiEndpoint}/upload/empty-map.jpg`} className="img" alt="empty map" />
+          {heatMap
+            ?<img src={`${configFile.apiEndpoint}/upload/heatMap.jpeg`} className="img" alt="heat map" />
+            :<img src={`${configFile.apiEndpoint}/upload/empty-map.jpg`} className="img" alt="empty map" />
+          }
         <p>
           Add new binary file please
         </p>

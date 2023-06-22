@@ -4,13 +4,26 @@ import path from 'path';
 import cors from 'cors';
 import Jimp from 'jimp';
 import fs from 'fs';
-import util from "util";
+import util from 'util';
+import config from 'config'
+
 const jimpRead = util.promisify(Jimp.read);
 
 const app = express();
 app.use(cors());
 app.use('/upload', express.static('upload'));
 
+const PORT = config.get('port') ?? 8000
+
+if (process.env.NODE_ENV === 'production') {
+  app.use('/', express.static('client'));
+
+  const indexPath = path.join('client', 'index.html');
+
+  app.get('*', (req, res) => {
+    res.sendFile(indexPath);
+  })
+}
 // Оголошую сховище для файлів
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -218,7 +231,7 @@ app.post('/upload', upload.any(), (req, res) => {
 
 async function start(){
   try{
-    app.listen(8000,()=>{
+    app.listen(PORT,()=>{
       console.log('Server started on port: 8000');
     })
   }catch (error){
