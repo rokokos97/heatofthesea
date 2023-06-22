@@ -55,3 +55,9 @@ I was unable to complete the task and got stuck at the stage of processing the u
 <p>
 To solve a technical task of this level, you need to have better knowledge in Node.js and TypeScript. I will continue to work on solving this problem as soon as I get the hang of TypeScript.
 </p>
+
+## Update
+
+<p>
+This task is complete!
+</p>
